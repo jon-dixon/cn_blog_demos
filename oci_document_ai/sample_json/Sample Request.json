@@ -1,0 +1,28 @@
+{
+  "compartmentId": "ocid1.compartment.oc1..aaaaaaaahjgav3363gdshoeyjo3qrwf4q7pwkinrebeiihy7rer6e6zkg2aq",
+  "document": {
+    "namespaceName": "nueva",
+    "bucketName": "APEX_OCI_BLOG_FILES",
+    "objectName": "DocumentAI/Walgreens_Sample_Receipt.jpg",
+    "source": "OBJECT_STORAGE"
+  },
+  "features": [
+    {
+      "featureType": "TEXT_DETECTION"
+    },
+    {
+      "featureType": "DOCUMENT_CLASSIFICATION",
+      "maxResults": 2
+    },
+    {
+      "featureType": "LANGUAGE_CLASSIFICATION",
+      "maxResults": 2
+    },
+    {
+      "featureType": "KEY_VALUE_DETECTION"
+    },
+    {
+      "featureType": "TABLE_DETECTION"
+    }
+  ]
+}
