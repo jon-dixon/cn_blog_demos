@@ -6,3 +6,6 @@ This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/teams_outboun
 
 # MS teams Incoming Webhook
 This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/teams_incoming_webhook) contains code which supports the Blog Post [Post Actionable Messages to Teams Using Incoming Webhooks, APEX & ORDS](https://blog.cloudnueva.com/teams-incoming-webhooks)
+
+# Oracle Cloud Infrastructure (OCI) Pre-Authenticated Requests
+This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/oci_pre_authenticated_requests) contains code which supports the Blog Post [Post Actionable Messages to Teams Using Incoming Webhooks, APEX & ORDS](https://blog.cloudnueva.com/apex-oci-par/)
