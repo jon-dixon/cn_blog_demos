@@ -13,7 +13,7 @@ This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/oci_document_
 # APEX MS Graph & Office 365 Integrations
 This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/o365_apex_integrations) contains code which supports my Blog Series [APEX MS Office 365 Integrations](https://blog.cloudnueva.com/series/apex-office365)
 
-## Install Instructions
+** Install Instructions **
 - When importing the Demo APEX Application, enter the following when prompted:
   - Enter your MS App registration client ID and client secret when prompted for the Web Credential 'MS Office 365 Integration Blog'
   - Enter your MS Office 365 Tenant ID instead of the text '<YOUR_MS_OFFICE_TENANT_ID>' in the 'Base URL' field when prompted for the Remote Server 'MS Tenant Login URL'
