@@ -11,7 +11,7 @@ This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/teams_incomin
 This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/oci_document_ai) contains code which supports the Blog Post [Turn Text into Data with APEX & OCI Document AI](https://blog.cloudnueva.com/apex-and-oci-document-ai)
 
 # APEX MS Graph & Office 365 Integrations
-This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/o365_apex_integrations) contains code which supports my Blog Series [APEX MS Office 365 Integrations](https://blog.cloudnueva.com/series/apex-office365)
+This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/ms_office_integrations) contains code which supports my Blog Series [APEX MS Office 365 Integrations](https://blog.cloudnueva.com/series/apex-office365)
 
 **Install Instructions**
 - When importing the Demo APEX Application, enter the following when prompted:
