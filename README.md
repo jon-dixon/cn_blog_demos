@@ -18,3 +18,6 @@ This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/ms_office_int
   - Enter your MS App registration client ID and client secret when prompted for the Web Credential 'MS Office 365 Integration Blog'
   - Enter your MS Office 365 Tenant ID instead of the text '<YOUR_MS_OFFICE_TENANT_ID>' in the 'Base URL' field when prompted for the Remote Server 'MS Tenant Login URL'
 - Update the option_code 'TENANT_ID' in the table 'CN_MS_GRAPH_OPTS' to your Tenant ID.
+
+# Oracle Cloud Infrastructure (OCI) Pre-Authenticated Requests
+This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/oci_pre_authenticated_requests) contains code which supports the Blog Post [How To Generate & Use OCI Pre-Authenticated Requests from APEX](https://blog.cloudnueva.com/apex-oci-par)
