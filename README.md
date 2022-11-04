@@ -21,3 +21,6 @@ This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/ms_office_int
 
 # Oracle Cloud Infrastructure (OCI) Pre-Authenticated Requests
 This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/oci_pre_authenticated_requests) contains code which supports the Blog Post [How To Generate & Use OCI Pre-Authenticated Requests from APEX](https://blog.cloudnueva.com/apex-oci-par)
+
+# Bulk Address Validation & Geocoding with Oracle eLocation & APEX
+This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/elocation_address_validation) contains code which supports the Blog Post [Bulk Address Validation & Geocoding with Oracle eLocation & APEX](https://blog.cloudnueva.com/bulk-validate-addresses-elocation)
