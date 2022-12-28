@@ -24,3 +24,6 @@ This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/oci_pre_authe
 
 # Bulk Address Validation & Geocoding with Oracle eLocation & APEX
 This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/elocation_address_validation) contains code which supports the Blog Post [Bulk Address Validation & Geocoding with Oracle eLocation & APEX](https://blog.cloudnueva.com/bulk-validate-addresses-elocation)
+
+# Integrating with Oracle ARCS Using APEX
+This [folder](https://github.com/jon-dixon/cn_blog_demos/tree/main/arcs_utilities/PLSQL) contains code which supports the Blog Series [Integrating with Oracle ARCS Using APEX](https://blog.cloudnueva.com/series/arcs)
