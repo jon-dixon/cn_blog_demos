@@ -2,7 +2,7 @@ CREATE OR REPLACE EDITIONABLE PACKAGE BODY CN_MSGRAPH_REST_PLUGIN_PK AS
 
 -- Inspect the Response to see how many records were returned.
 -- Also check to see if the @odata.nextLink attribute exists.
---  This indicates there are more records to fetch.
+--  This indicates if there are more records to fetch.
 PROCEDURE response_info
   (p_response   IN CLOB,
    x_more_rows OUT NOCOPY VARCHAR2,
@@ -153,8 +153,6 @@ BEGIN
   ELSE
     l_fetch_all_rows := 'N';
   END IF;
-  apex_debug.info('XXFetch ** START ** first_row [%0] page_size[%1], max_rows [%2] fetch_all [%3]', 
-                   p_params.first_row, p_params.fixed_page_size, p_params.max_rows, l_fetch_all_rows);
 
   -- Get the details of the operation being called [URL, Query String, Method, Timeout, etc.]
   l_web_source_operation := apex_plugin_util.get_web_source_operation
@@ -170,7 +168,8 @@ BEGIN
 
   -- Set the Max Time in Seconds to allow for Fetch All
   l_time_budget := COALESCE(l_web_source_operation.fetch_all_rows_timeout, c_dflt_time_budget);
-  apex_debug.info('XXFetch timeout [%0], time_budget [%1], QS [%2]', l_web_source_operation.timeout, l_time_budget, l_query_string);
+  apex_debug.info('XX **START** fetch_all [%0] first_row [%1] max_rows [%2] fixed_page_size [%3] timeout [%4] time_budget[%5]', 
+                   l_fetch_all_rows, p_params.first_row, p_params.max_rows, p_params.fixed_page_size, l_web_source_operation.timeout, l_time_budget);
 
   -- Set initial rows to skip value, used for $skip MS Graph Parameter.
   -- This is the first row calculated by APEX minus 1.
@@ -191,8 +190,7 @@ BEGIN
     --  the calculated $skip and $top parameters for this iteration/page.
     l_web_source_operation.query_string := l_query_string || '$skip=' || l_skip || 
                                            chr(38) || '$top=' || c_page_size;
-    apex_debug.info('XXFetch [%0] l_skip [%1] c_page_size [%2]', l_iteration, l_skip, c_page_size);
-    apex_debug.info('XXFetch [%0] Q Str [%1]', l_iteration, l_web_source_operation.query_string);
+    apex_debug.info('  XX [%0] l_skip [%1] c_page_size [%2]', l_iteration, l_skip, c_page_size);
 
     -- Call the MS Graph API passing in the calculated parameters.
     apex_plugin_util.make_rest_request
@@ -208,7 +206,7 @@ BEGIN
        x_more_rows => l_more_rows,
        x_row_count => l_row_count);
     l_total_row_count := l_total_row_count + l_row_count;
-    apex_debug.info('XXFetch more_rows [%0] row_count [%1] total_rows [%2] time_budget [%3]', l_more_rows, l_row_count, l_total_row_count, l_time_budget);
+    apex_debug.info('  XX more_rows [%0] row_count [%1] total_rows [%2] time_budget [%3]', l_more_rows, l_row_count, l_total_row_count, l_time_budget);
 
     -- Check to see if we need to stop iterating/paging.
     IF NOT p_params.fetch_all_rows THEN
