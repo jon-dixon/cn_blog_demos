@@ -28,7 +28,7 @@ prompt APPLICATION 150 - MS Office 365 Integrations
 -- Application Export:
 --   Application:     150
 --   Name:            MS Office 365 Integrations
---   Date and Time:   16:20 Wednesday April 19, 2023
+--   Date and Time:   15:54 Thursday April 20, 2023
 --   Exported By:     JON@CLOUDNUEVA.COM
 --   Flashback:       0
 --   Export Type:     Component Export
@@ -52,9 +52,9 @@ wwv_flow_imp_shared.create_plugin(
 ,p_name=>'COM.CLOUDNUEVA.MSGRAPH.CALENDAR'
 ,p_display_name=>'MS Graph Calendar'
 ,p_api_version=>2
-,p_wsm_capabilities_function=>'CN_O365_REST_PLUGIN_PK.capabilities_calendar'
-,p_wsm_fetch_function=>'CN_O365_REST_PLUGIN_PK.fetch_calendar'
-,p_wsm_discover_function=>'CN_O365_REST_PLUGIN_PK.discover_calendar'
+,p_wsm_capabilities_function=>'cn_msgraph_rest_plugin_pk.capabilities_calendar'
+,p_wsm_fetch_function=>'cn_msgraph_rest_plugin_pk.fetch_calendar'
+,p_wsm_discover_function=>'cn_msgraph_rest_plugin_pk.discover_calendar'
 ,p_standard_attributes=>'ENDPOINT_HINT'
 ,p_substitute_attributes=>true
 ,p_subscribe_plugin_settings=>true
