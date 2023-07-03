@@ -28,14 +28,11 @@ END;
 /
 
 -- Create Template Records.
-INSERT INTO CN_MS_GRAPH_OPTS (option_code, option_value, description)
-  VALUES ('TENANT_ID', 'TBD', 'Microsoft Office 365 Tenant ID');
-INSERT INTO CN_MS_GRAPH_OPTS (option_code, option_value, description)
-  VALUES ('AUTH_TOKEN_URL', 'https://login.microsoftonline.com/#TENANTID#/oauth2/v2.0/token', 'URL used to get an Auth Token from Microsoft.');
-INSERT INTO CN_MS_GRAPH_OPTS (option_code, option_value, description)
-  VALUES ('WEB_CREDENTIAL_STATIC_ID', 'MS_OFFICE365_INTEGRATION_BLOG', 'Web credential with Access to Office 365 Services.');
-
-INSERT INTO CN_MS_GRAPH_OPTS (option_code, option_value, description)
-  VALUES ('EMAIL_ATTACHMENT_ENDPOINT', 'https://graph.microsoft.com/v1.0/users/#USER_ID#/mailFolders/Inbox/messages/#MESSAGE_ID#/attachments/#ATTACHMENT_ID#/$value', 'MS Graph Endpoint to get a Specific Email Attachment.');
-
+REM INSERTING into CN_MS_GRAPH_OPTS
+SET DEFINE OFF;
+Insert into CN_MS_GRAPH_OPTS (OPTION_ID,OPTION_CODE,OPTION_VALUE,DESCRIPTION) values (1,'TENANT_ID','Enter Your Tenent ID','Microsoft Office 365 Tenant ID');
+Insert into CN_MS_GRAPH_OPTS (OPTION_ID,OPTION_CODE,OPTION_VALUE,DESCRIPTION) values (2,'AUTH_TOKEN_URL','https://login.microsoftonline.com/#TENANTID#/oauth2/v2.0/token','URL used to get an Auth Token from Microsoft.');
+Insert into CN_MS_GRAPH_OPTS (OPTION_ID,OPTION_CODE,OPTION_VALUE,DESCRIPTION) values (3,'WEB_CREDENTIAL_STATIC_ID','CN_MS_GRAPH_ACCESS','Web credential with Access to Office 365 Services.');
+Insert into CN_MS_GRAPH_OPTS (OPTION_ID,OPTION_CODE,OPTION_VALUE,DESCRIPTION) values (4,'EMAIL_ATTACHMENT_ENDPOINT','https://graph.microsoft.com/v1.0/users/#USER_ID#/mailFolders/Inbox/messages/#MESSAGE_ID#/attachments/#ATTACHMENT_ID#/$value','MS Graph Endpoint to get a Specific Email Attachment.');
+Insert into CN_MS_GRAPH_OPTS (OPTION_ID,OPTION_CODE,OPTION_VALUE,DESCRIPTION) values (5,'USER_EMAIL_MESSAGES_ENDPOINT','https://graph.microsoft.com/v1.0/users/#USER_ID#/mailFolders/Inbox/messages','MS Graph Endpoint to get a Specific Email Attachment.');
 COMMIT;
