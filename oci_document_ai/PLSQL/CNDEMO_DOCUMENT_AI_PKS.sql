@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE CNDEMO_DOCUMENT_AI_PK AS
+CREATE OR REPLACE PACKAGE CNDEMO_DOCUMENT_AI_PK AUTHID DEFINER AS
 -------------------------------------------------------------------------------
 -- NAME        : cndemo_document_ai_pk
 -- FILE NAME   : CNDEMO_DOCUMENT_AI_PKB.sql
@@ -18,11 +18,11 @@ CREATE OR REPLACE PACKAGE CNDEMO_DOCUMENT_AI_PK AS
   GC_OCI_DOC_AI_TIMEOUT_SECS CONSTANT NUMBER         := 15;
   GC_WC_CREDENTIAL_ID        CONSTANT VARCHAR2(50)   := 'APEX_OCI_BLOG_CREDENTIAL';
   GC_OCY_DOC_AI_PAYLOAD      CONSTANT VARCHAR2(32000) := '{
-  "compartmentId": "<<CHANGEME>>",
+  "compartmentId": "ocid1.compartment.oc1..aaaaaaaahjgav3363gdshoeyjo3qrwf4q7pwkinrebeiihy7rer6e6zkg2aq",
   "document": {
-    "namespaceName": "<<CHANGEME>>",
-    "bucketName": "<<CHANGEME>>",
-    "objectName": "<<CHANGEME>>/#FILE_NAME#",
+    "namespaceName": "nueva",
+    "bucketName": "APEX_OCI_BLOG_FILES",
+    "objectName": "DocumentAI/#FILE_NAME#",
     "source": "OBJECT_STORAGE"
   },
   "features": [
@@ -46,12 +46,51 @@ CREATE OR REPLACE PACKAGE CNDEMO_DOCUMENT_AI_PK AS
   ]
 }';
 
+  GC_OCI_DOC_UNDERSTAND_PAYLOAD CONSTANT VARCHAR2(32000) := '{
+  "processorConfig": {
+    "processorType": "GENERAL",
+    "features": [
+      {
+        "featureType": "KEY_VALUE_EXTRACTION"
+      },
+      {
+        "featureType": "DOCUMENT_CLASSIFICATION",
+        "maxResults": 5
+      }
+    ],
+    "documentType": "RECEIPT"
+  },
+  "inputLocation": {
+    "sourceType": "OBJECT_STORAGE_LOCATIONS",
+    "objectLocations": [
+      {
+        "namespaceName": "nueva",
+        "bucketName": "APEX_OCI_BLOG_FILES",
+        "objectName": "DocumentAI/#FILE_NAME#"
+      }
+    ]
+  },
+  "compartmentId": "ocid1.compartment.oc1..aaaaaaaahjgav3363gdshoeyjo3qrwf4q7pwkinrebeiihy7rer6e6zkg2aq",
+  "id": "aaaa",
+  "outputLocation": {
+    "namespaceName": "nueva",
+    "bucketName": "APEX_OCI_BLOG_FILES",
+    "prefix": "DocUnderstandingOut/"
+  }
+}';
+
 PROCEDURE process_file
   (p_apex_file_name  IN VARCHAR2,
    x_document_id    OUT cndemo_document_ai_docs.document_id%TYPE);
 
 PROCEDURE render_document
   (x_document_id  IN cndemo_document_ai_docs.document_id%TYPE);
+
+PROCEDURE dl_document_ai_json (p_document_id IN cndemo_document_ai_docs.document_id%TYPE);
+
+PROCEDURE process_camera_image;
   
+PROCEDURE delete_document (p_document_id IN cndemo_document_ai_docs.document_id%TYPE);
+
 END CNDEMO_DOCUMENT_AI_PK;
 /
