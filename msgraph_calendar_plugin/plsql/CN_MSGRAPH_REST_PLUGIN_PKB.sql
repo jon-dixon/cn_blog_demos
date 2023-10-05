@@ -1,4 +1,4 @@
-CREATE OR REPLACE EDITIONABLE PACKAGE BODY CN_MSGRAPH_REST_PLUGIN_PK AS
+create or replace PACKAGE BODY CN_MSGRAPH_REST_PLUGIN_PK AS
 
 -- Inspect the Response to see how many records were returned.
 -- Also check to see if the @odata.nextLink attribute exists.

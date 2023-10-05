@@ -19,7 +19,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.1'
+,p_release=>'23.1.4'
 ,p_default_workspace_id=>8542862351627306
 ,p_default_application_id=>150
 ,p_default_id_offset=>0
@@ -33,7 +33,7 @@ prompt APPLICATION 150 - MS Office 365 Integrations
 -- Application Export:
 --   Application:     150
 --   Name:            MS Office 365 Integrations
---   Date and Time:   23:14 Monday July 3, 2023
+--   Date and Time:   03:47 Thursday October 5, 2023
 --   Exported By:     JON@CLOUDNUEVA.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -73,7 +73,7 @@ prompt APPLICATION 150 - MS Office 365 Integrations
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         23.1.1
+--   Version:         23.1.4
 --   Instance ID:     708692834182613
 --
 
@@ -125,7 +125,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'APEX Social Signon'
 ,p_last_updated_by=>'JON@CLOUDNUEVA.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230703230247'
+,p_last_upd_yyyymmddhh24miss=>'20230923174758'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>26
 ,p_print_server_type=>'NATIVE'
@@ -213,7 +213,7 @@ wwv_imp_workspace.create_remote_server(
  p_id=>wwv_flow_imp.id(14589652229609821)
 ,p_name=>'MS Graph Token Service'
 ,p_static_id=>'MS_Graph_Token_Service'
-,p_base_url=>nvl(wwv_flow_application_install.get_remote_server_base_url('MS_Graph_Token_Service'),'https://login.microsoftonline.com/ENTERYOURTENANTIDHERE/oauth2/v2.0/token')
+,p_base_url=>nvl(wwv_flow_application_install.get_remote_server_base_url('MS_Graph_Token_Service'),'https://login.microsoftonline.com/<ENTERYOURTENANTHERE>/oauth2/v2.0/token')
 ,p_https_host=>nvl(wwv_flow_application_install.get_remote_server_https_host('MS_Graph_Token_Service'),'')
 ,p_server_type=>'AUTHENTICATION'
 ,p_ords_timezone=>nvl(wwv_flow_application_install.get_remote_server_ords_tz('MS_Graph_Token_Service'),'')
@@ -1361,6 +1361,22 @@ wwv_flow_imp_shared.create_web_source_module(
 ,p_attribute_11=>'true'
 );
 wwv_flow_imp_shared.create_web_source_param(
+ p_id=>wwv_flow_imp.id(8464720279858710)
+,p_web_src_module_id=>wwv_flow_imp.id(688310530616818955)
+,p_name=>'Prefer'
+,p_param_type=>'HEADER'
+,p_value=>'outlook.timezone="Pacific Standard Time"'
+);
+wwv_flow_imp_shared.create_web_source_param(
+ p_id=>wwv_flow_imp.id(8467832006916573)
+,p_web_src_module_id=>wwv_flow_imp.id(688310530616818955)
+,p_name=>'$top'
+,p_param_type=>'QUERY_STRING'
+,p_is_required=>false
+,p_value=>'200'
+,p_is_static=>true
+);
+wwv_flow_imp_shared.create_web_source_param(
  p_id=>wwv_flow_imp.id(688311108727818961)
 ,p_web_src_module_id=>wwv_flow_imp.id(688310530616818955)
 ,p_name=>'user_id'
@@ -1381,7 +1397,7 @@ wwv_flow_imp_shared.create_web_source_param(
 ,p_web_src_module_id=>wwv_flow_imp.id(688310530616818955)
 ,p_name=>'$filter'
 ,p_param_type=>'QUERY_STRING'
-,p_value=>'start/dateTime gt ''2023-06-01T01:00:00Z'''
+,p_value=>'start/dateTime gt ''2023-08-20T01:00:00Z'' and start/dateTime lt ''2023-08-24T01:00:00Z'''
 );
 wwv_flow_imp_shared.create_web_source_operation(
  p_id=>wwv_flow_imp.id(688310749212818958)
@@ -24932,7 +24948,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'08'
 ,p_last_updated_by=>'JON@CLOUDNUEVA.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230621180945'
+,p_last_upd_yyyymmddhh24miss=>'20230822230117'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(31027874358914133)
@@ -25001,7 +25017,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_04=>'EVENT_ID'
 ,p_attribute_05=>'f?p=&APP_ID.:22:&SESSION.::&DEBUG.:22:P22_EVENT_ID:&EVENT_ID.'
 ,p_attribute_07=>'N'
-,p_attribute_11=>'month:week:navigation'
+,p_attribute_11=>'month:week:day:list:navigation'
 ,p_attribute_13=>'Y'
 ,p_attribute_16=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '&BODY!RAW.<br>',
@@ -25009,11 +25025,18 @@ wwv_flow_imp_page.create_page_plug(
 '<b>Body</b>',
 '&BODY_PREVIEW.'))
 ,p_attribute_17=>'N'
-,p_attribute_18=>'12'
+,p_attribute_18=>'24'
 ,p_attribute_19=>'Y'
-,p_attribute_20=>'7'
+,p_attribute_20=>'8'
 ,p_attribute_21=>'10'
 ,p_attribute_22=>'Y'
+);
+wwv_flow_imp_shared.create_web_source_comp_param(
+ p_id=>wwv_flow_imp.id(8465081192858710)
+,p_page_id=>20
+,p_web_src_param_id=>wwv_flow_imp.id(8464720279858710)
+,p_page_plug_id=>wwv_flow_imp.id(688170226224151316)
+,p_value_type=>'DEFAULT'
 );
 wwv_flow_imp_shared.create_web_source_comp_param(
  p_id=>wwv_flow_imp.id(688170835239151322)
@@ -25021,7 +25044,7 @@ wwv_flow_imp_shared.create_web_source_comp_param(
 ,p_web_src_param_id=>wwv_flow_imp.id(688320199858144776)
 ,p_page_plug_id=>wwv_flow_imp.id(688170226224151316)
 ,p_value_type=>'STATIC'
-,p_value=>'start/dateTime gt ''2023-06-01T01:00:00Z'''
+,p_value=>'start/dateTime gt ''2023-08-17T01:00:00Z'' and start/dateTime lt ''2023-08-26T23:00:00Z'''
 );
 wwv_flow_imp_shared.create_web_source_comp_param(
  p_id=>wwv_flow_imp.id(688171019402151324)
